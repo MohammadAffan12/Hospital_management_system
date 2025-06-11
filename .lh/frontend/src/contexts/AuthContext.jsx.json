@@ -1,0 +1,18 @@
+{
+    "sourceFile": "frontend/src/contexts/AuthContext.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1749581973183,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1749581973183,
+            "name": "Commit-0",
+            "content": "import React, { createContext, useState, useEffect, useContext } from 'react';\r\n\r\nconst AuthContext = createContext();\r\n\r\nexport function useAuth() {\r\n  return useContext(AuthContext);\r\n}\r\n\r\nexport function AuthProvider({ children }) {\r\n  const [currentUser, setCurrentUser] = useState(null);\r\n  const [loading, setLoading] = useState(true);\r\n  const [token, setToken] = useState(localStorage.getItem('token') || null);\r\n  \r\n  // Check if user is already logged in\r\n  useEffect(() => {\r\n    const storedUser = localStorage.getItem('user');\r\n    const storedToken = localStorage.getItem('token');\r\n    \r\n    if (storedUser && storedToken) {\r\n      setCurrentUser(JSON.parse(storedUser));\r\n      setToken(storedToken);\r\n    }\r\n    \r\n    setLoading(false);\r\n  }, []);\r\n  \r\n  // Login function\r\n  const login = async (email, password) => {\r\n    try {\r\n      // Replace with actual API call when implemented\r\n      const response = await fetch('http://localhost:5000/api/auth/login', {\r\n        method: 'POST',\r\n        headers: { 'Content-Type': 'application/json' },\r\n        body: JSON.stringify({ email, password })\r\n      });\r\n      \r\n      const data = await response.json();\r\n      \r\n      if (data.success) {\r\n        localStorage.setItem('token', data.token);\r\n        localStorage.setItem('user', JSON.stringify(data.user));\r\n        setCurrentUser(data.user);\r\n        setToken(data.token);\r\n        return { success: true };\r\n      } else {\r\n        return { success: false, error: data.error };\r\n      }\r\n    } catch (error) {\r\n      console.error('Login error:', error);\r\n      return { success: false, error: error.message };\r\n    }\r\n  };\r\n  \r\n  // Logout function\r\n  const logout = () => {\r\n    localStorage.removeItem('token');\r\n    localStorage.removeItem('user');\r\n    setCurrentUser(null);\r\n    setToken(null);\r\n  };\r\n  \r\n  // Check if token is still valid\r\n  const isAuthenticated = () => {\r\n    return !!token;\r\n  };\r\n  \r\n  const value = {\r\n    currentUser,\r\n    token,\r\n    login,\r\n    logout,\r\n    isAuthenticated,\r\n    loading\r\n  };\r\n  \r\n  return (\r\n    <AuthContext.Provider value={value}>\r\n      {!loading && children}\r\n    </AuthContext.Provider>\r\n  );\r\n}\r\n"
+        }
+    ]
+}

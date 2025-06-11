@@ -1,0 +1,18 @@
+{
+    "sourceFile": "frontend/src/components/common/DeleteConfirmationModal.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1749585579039,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1749585579039,
+            "name": "Commit-0",
+            "content": "import React, { Fragment } from 'react';\r\nimport { Dialog, Transition } from '@headlessui/react';\r\n\r\nconst DeleteConfirmationModal = ({ isOpen, onClose, onConfirm, title, message }) => {\r\n  return (\r\n    <Transition appear show={isOpen} as={Fragment}>\r\n      <Dialog as=\"div\" className=\"relative z-10\" onClose={onClose}>\r\n        <Transition.Child\r\n          as={Fragment}\r\n          enter=\"ease-out duration-300\"\r\n          enterFrom=\"opacity-0\"\r\n          enterTo=\"opacity-100\"\r\n          leave=\"ease-in duration-200\"\r\n          leaveFrom=\"opacity-100\"\r\n          leaveTo=\"opacity-0\"\r\n        >\r\n          <div className=\"fixed inset-0 bg-black/30\" />\r\n        </Transition.Child>\r\n\r\n        <div className=\"fixed inset-0 overflow-y-auto\">\r\n          <div className=\"flex min-h-full items-center justify-center p-4 text-center\">\r\n            <Transition.Child\r\n              as={Fragment}\r\n              enter=\"ease-out duration-300\"\r\n              enterFrom=\"opacity-0 scale-95\"\r\n              enterTo=\"opacity-100 scale-100\"\r\n              leave=\"ease-in duration-200\"\r\n              leaveFrom=\"opacity-100 scale-100\"\r\n              leaveTo=\"opacity-0 scale-95\"\r\n            >\r\n              <Dialog.Panel className=\"w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all\">\r\n                <Dialog.Title\r\n                  as=\"h3\"\r\n                  className=\"text-lg font-medium leading-6 text-red-600\"\r\n                >\r\n                  {title}\r\n                </Dialog.Title>\r\n                <div className=\"mt-2\">\r\n                  <p className=\"text-sm text-gray-500\">\r\n                    {message}\r\n                  </p>\r\n                </div>\r\n\r\n                <div className=\"mt-6 flex justify-end space-x-3\">\r\n                  <button\r\n                    type=\"button\"\r\n                    className=\"inline-flex justify-center rounded-md border border-transparent bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300 focus:outline-none\"\r\n                    onClick={onClose}\r\n                  >\r\n                    Cancel\r\n                  </button>\r\n                  <button\r\n                    type=\"button\"\r\n                    className=\"inline-flex justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 focus:outline-none\"\r\n                    onClick={onConfirm}\r\n                  >\r\n                    Delete\r\n                  </button>\r\n                </div>\r\n              </Dialog.Panel>\r\n            </Transition.Child>\r\n          </div>\r\n        </div>\r\n      </Dialog>\r\n    </Transition>\r\n  );\r\n};\r\n\r\nexport default DeleteConfirmationModal;\r\n"
+        }
+    ]
+}

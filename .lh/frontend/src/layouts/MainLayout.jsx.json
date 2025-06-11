@@ -1,0 +1,22 @@
+{
+    "sourceFile": "frontend/src/layouts/MainLayout.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1749581974192,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1749585554672,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,17 @@\n import React, { useState } from 'react';\r\n import { Outlet } from 'react-router-dom';\r\n import Sidebar from '../components/common/Sidebar';\r\n import Header from '../components/common/Header';\r\n-import { useAuth } from '../contexts/AuthContext';\r\n \r\n const MainLayout = () => {\r\n   const [sidebarOpen, setSidebarOpen] = useState(false);\r\n-  const { currentUser } = useAuth();\r\n+  \r\n+  // Mock user data since we're removing authentication\r\n+  const currentUser = {\r\n+    name: 'Hospital Staff',\r\n+    email: 'staff@hospital.com'\r\n+  };\r\n \r\n   return (\r\n     <div className=\"min-h-screen bg-gray-100\">\r\n       <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />\r\n"
+                }
+            ],
+            "date": 1749581974192,
+            "name": "Commit-0",
+            "content": "import React, { useState } from 'react';\r\nimport { Outlet } from 'react-router-dom';\r\nimport Sidebar from '../components/common/Sidebar';\r\nimport Header from '../components/common/Header';\r\nimport { useAuth } from '../contexts/AuthContext';\r\n\r\nconst MainLayout = () => {\r\n  const [sidebarOpen, setSidebarOpen] = useState(false);\r\n  const { currentUser } = useAuth();\r\n\r\n  return (\r\n    <div className=\"min-h-screen bg-gray-100\">\r\n      <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />\r\n      \r\n      <div className=\"lg:pl-64 flex flex-col flex-1\">\r\n        <Header openSidebar={() => setSidebarOpen(true)} user={currentUser} />\r\n        \r\n        <main className=\"flex-1 pb-8\">\r\n          <div className=\"mt-8 px-4 sm:px-6 lg:px-8\">\r\n            {/* Main content rendered by nested routes */}\r\n            <Outlet />\r\n          </div>\r\n        </main>\r\n      </div>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default MainLayout;\r\n"
+        }
+    ]
+}

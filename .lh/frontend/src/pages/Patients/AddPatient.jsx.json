@@ -1,0 +1,18 @@
+{
+    "sourceFile": "frontend/src/pages/Patients/AddPatient.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1749585583052,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1749585583052,
+            "name": "Commit-0",
+            "content": "import React, { useState } from 'react';\r\nimport { useNavigate, Link } from 'react-router-dom';\r\nimport { patientsApi } from '../../services/api';\r\nimport PatientForm from '../../components/patients/PatientForm';\r\n\r\nconst AddPatient = () => {\r\n  const navigate = useNavigate();\r\n  const [error, setError] = useState(null);\r\n\r\n  const handleAddPatient = async (data) => {\r\n    try {\r\n      const response = await patientsApi.create(data);\r\n      if (response.success) {\r\n        navigate(`/patients/${response.data.patient.patient_id}`);\r\n      } else {\r\n        setError(response.error || 'Failed to create patient');\r\n      }\r\n    } catch (err) {\r\n      console.error('Error adding patient:', err);\r\n      setError('Failed to add patient. Please try again.');\r\n    }\r\n  };\r\n\r\n  return (\r\n    <div>\r\n      <div className=\"flex justify-between items-center mb-6\">\r\n        <h1 className=\"text-2xl font-semibold text-gray-900\">Add New Patient</h1>\r\n        <Link\r\n          to=\"/patients\"\r\n          className=\"px-4 py-2 border border-gray-300 rounded-md text-sm text-gray-700 bg-white hover:bg-gray-50\"\r\n        >\r\n          Cancel\r\n        </Link>\r\n      </div>\r\n\r\n      <PatientForm onSubmit={handleAddPatient} error={error} />\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default AddPatient;\r\n"
+        }
+    ]
+}

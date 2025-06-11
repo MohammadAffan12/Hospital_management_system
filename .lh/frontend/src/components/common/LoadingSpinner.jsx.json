@@ -1,0 +1,18 @@
+{
+    "sourceFile": "frontend/src/components/common/LoadingSpinner.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1749585578723,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1749585578723,
+            "name": "Commit-0",
+            "content": "import React from 'react';\r\n\r\nconst LoadingSpinner = ({ size = 'large' }) => {\r\n  const sizeClasses = {\r\n    small: 'h-6 w-6',\r\n    medium: 'h-8 w-8',\r\n    large: 'h-12 w-12'\r\n  };\r\n\r\n  return (\r\n    <div className=\"flex justify-center my-8\">\r\n      <div className={`animate-spin rounded-full border-t-2 border-b-2 border-blue-500 ${sizeClasses[size]}`}></div>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default LoadingSpinner;\r\n"
+        }
+    ]
+}
